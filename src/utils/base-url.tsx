@@ -1,0 +1,1 @@
+export const baseUrl = 'https://e-commerce-server-moh.onrender.com/api/'

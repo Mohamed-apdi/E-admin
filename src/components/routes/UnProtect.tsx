@@ -1,0 +1,52 @@
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import {jwtDecode} from "jwt-decode";
+
+interface DecodedToken {
+  exp: number;
+}
+
+const useAuth = () => {
+  const getUser = () => {
+    try {
+      const user = localStorage.getItem("user");
+      return user ? JSON.parse(user) : null;
+    } catch (error) {
+      console.log("Could not get user", error);
+      return null;
+    }
+  };
+
+  const isTokenExpired = (token: string) => {
+    try {
+      const decodedToken = jwtDecode<DecodedToken>(token);
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp < currentTime;
+    } catch (error) {
+      console.log("Error decoding token", error);
+      return true;
+    }
+  };
+
+  const auth = getUser();
+  const isAuthenticated = auth && auth.token && !isTokenExpired(auth.token);
+
+  return { auth, isAuthenticated };
+};
+
+export const UnProtect = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
+
+  if (isAuthenticated) {
+    return null;
+  }
+
+  return <Outlet />;
+};

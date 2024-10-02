@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",          // Set the base URL to the project root
+    "paths": {
+      "@/*": ["src/*"]       // Map "@/..." to "src/..."
+    },
+    "strict": true
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
