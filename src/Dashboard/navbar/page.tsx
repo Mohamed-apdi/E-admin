@@ -11,8 +11,8 @@ export const Navbar = () => {
 
   return (
     <div className="p-3">
-        <div className="flex items-center justify-between">
-           <div>
+        <div className="flex items-center md:justify-end justify-between">
+           <div className="md:hidden">
             <MobileNavbar/>
            </div>
            <div className="flex items-center gap-x-2">
