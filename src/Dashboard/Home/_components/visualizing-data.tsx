@@ -63,7 +63,7 @@ export const VisualizingData = () => {
                     />
                     <Bar dataKey="sales" fill="#b91c1c" radius={4} />
                     <Bar dataKey="orders" fill="#fecaca" radius={4} />
-                    <Bar dataKey="product" fill="#64748b" radius={4} />
+                    <Bar dataKey="product" fill="#10b981" radius={4} />
                 </BarChart>
                 </ChartContainer>
             </CardContent>
