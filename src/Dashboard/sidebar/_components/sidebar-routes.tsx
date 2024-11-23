@@ -9,8 +9,8 @@ const goesRoutes = [
     icon: House,
   },
   {
-    path: "/t",
-    label: "Test",
+    path: "/users",
+    label: "Users List",
     icon: FunctionSquare,
   },
 

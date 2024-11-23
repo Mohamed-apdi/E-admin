@@ -8,15 +8,14 @@ interface UserData {
 
 const login = async (userData: UserData) => {
   try {
-    const response = await apiClient.post("/user/admin-login", userData);
+    const { data } = await apiClient.post("/user/admin-login", userData);
 
-    if (response.data) {
-      localStorage.setItem("user", JSON.stringify(response.data));
-      localStorage.setItem("token", JSON.stringify(response.data.token));
+    if (data) {
+      localStorage.setItem("user", JSON.stringify(data));
     }
 
-    return response.data;
-  } catch (error: any) {
+    return data;
+  } catch (error) {
     const axiosError = error as AxiosError;
     console.error("[LOGIN ERROR]", axiosError);
     throw new Error(axiosError.response?.data?.message || "Failed to login");
