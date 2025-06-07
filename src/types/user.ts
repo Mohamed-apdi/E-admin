@@ -10,7 +10,12 @@ export interface User {
     refreshToken?: string;
   }
 
-  export interface Users extends User {
+  export interface Users {
+    _id?: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    mobile: string;
     role: UserRole;
     address: string;
     isBlocked: boolean;

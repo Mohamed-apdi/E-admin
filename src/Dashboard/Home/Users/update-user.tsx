@@ -73,10 +73,10 @@ export const UpdateUser = () => {
     if (id) {
       try {
         // Dispatch update action and wait for completion
-        await dispatch(updateUser({ id, data })).unwrap();
+        await dispatch(updateUser({ id, data }));
         toast.success("User updated successfully");
         navigate("/users")
-      } catch (error: any) {
+      } catch (error) {
         // Show error toast with a meaningful message
         toast.error(error?.message || "Failed to update user");
       }
@@ -143,7 +143,7 @@ export const UpdateUser = () => {
               <div className="flex flex-col space-y-1.5 col-span-3">
                 <Label htmlFor="isBlocked">Is Blocked</Label>
                 <Select
-                  onValueChange={(value) => setValue("isBlocked", value === "true")}
+                  onValueChange={(value) => setValue("isBlocked", value === "true", { shouldValidate: true })}
                   defaultValue={String(user?.isBlocked ?? false)}
                 >
                   <SelectTrigger>

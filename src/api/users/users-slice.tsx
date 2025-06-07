@@ -76,10 +76,9 @@ export const updateUser = createAsyncThunk<Users, { id: string; data: Users }, {
       const updatedUser = await UsersService.updateUser({ id, data });
       return updatedUser;
     } catch (error: any) {
-      console.error("Error updating user:", error); // Log errors
       const message = error.response?.data?.message || error.message;
       return thunkAPI.rejectWithValue(message);
-    }
+  }
   }
 );
 

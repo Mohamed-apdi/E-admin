@@ -41,9 +41,19 @@ const updateUser = async ({id, data,}: {id: string; data: Users;}): Promise<User
       throw new Error(handleAxiosError(error));
     }
   };
+
+  const getAllUsers = async () => {
+    try {
+        const response = await apiClient.get("/user/all-users");
+        return response.data;
+    } catch (error) {
+        throw new Error(handleAxiosError(error));
+    }
+  }
 export const UsersService = {
     getUsers,
     getUser,
     deleteUser,
-    updateUser
+    updateUser,
+    getAllUsers,
 };
